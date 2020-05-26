@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <el-button>123</el-button>
+      <el-button @click="toDemo">toDemo</el-button>
+      <el-button @click="toType">toType</el-button>
+      <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { man } from '@/commom/commom'
+import { Man } from '@/commom/commom';
 
 @Component({
   components: {
@@ -14,11 +16,17 @@ import { man } from '@/commom/commom'
 })
 export default class App extends Vue {
   public a: string = '';
-  private checkArguments(val: man) {
-    console.log(val)
+  private checkArguments(val: Man) {
+    console.log(val);
   }
-  private created(){
-    this.checkArguments({ name:'tony',age:12,sex:1,isMarry:true })
+  private toDemo() {
+    this.$router.push({ name: 'demo' });
+  }
+  private toType() {
+    this.$router.push({ name: 'type' });
+  }
+  private created() {
+    this.checkArguments({ name: 'tony', age: 12, sex: 1, isMarry: true });
   }
 }
 </script>
