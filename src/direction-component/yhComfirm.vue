@@ -79,7 +79,7 @@
     }
 </script>
 
-<style lang='less'>
+<style lang='scss'>
     .mask{
         width:100vw;
         height:100vh;

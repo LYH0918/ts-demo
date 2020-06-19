@@ -1,15 +1,27 @@
 <template>
-    <div>type page</div>
+    <div class='bg'>
+        <div>type page{{userAge}}</div>
+        <el-button @click='getMutation'>{{nextAge}}</el-button>
+        <!-- <div>123{{getMutation()}}</div> -->
+    </div>
 </template>
 
 <script lang='ts'>
     import { Component, Vue } from 'vue-property-decorator';
     import { Sport, Man, Sort, Test, TestFun } from '@/commom/commom';
     import TestChild from '@/class/demo';
+    import { Getter, Mutation, State, namespace } from 'vuex-class';
+    const userModule = namespace('user');
     @Component
     export default class TypeDemo extends Vue {
         private wn: [string, number] = ['string', 0];
         private val: string = '';
+        @Getter('nextAge')
+        private nextAge: number;
+        @userModule.State('userAge')
+        private userAge: number;
+        @Mutation('getInfo')
+        private getInfo: () => void;
         private created() {
             const a: Sport = Sport.basketball;
             const b: string = Sport[8];
@@ -27,6 +39,7 @@
             // this.setArr();
             this.getClassName();
             console.log(this.TestFun(['ayay']).length);
+            this.getState();
         }
         private getRand() {
             const rand = Math.random();
@@ -64,8 +77,21 @@
             console.log(Lily);
         }
 
+        private getState() {
+            console.log(this.$store.state);
+            console.log(this.$store.getters);
+        }
+
+        private getMutation() {
+            this.getInfo();
+        }
+
         private TestFun: TestFun = function(arg) { return arg; };
     }
 </script>
 
-<style lang='less' scoped></style>
+<style lang='scss' scoped>
+    .bg {
+        @include bg_color(#aaa);
+    }
+</style>

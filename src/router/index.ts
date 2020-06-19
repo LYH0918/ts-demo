@@ -28,6 +28,11 @@ const routes = [
     name: 'type',
     component: () => import('../views/type.vue'),
   },
+  {
+    path: '/topic',
+    name: 'topic',
+    component: () => import('../views/Topic.vue'),
+  },
 ];
 
 const router = new VueRouter({

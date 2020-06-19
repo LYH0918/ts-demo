@@ -1,0 +1,11 @@
+@import './basic-data.scss';
+
+@mixin bg_color($color) {
+    background-color:$color;
+    [data-theme='theme1'] & {
+        background-color: $bg-color-theme1;
+    }
+    [data-theme='theme2'] & {
+        background-color: $bg-color-theme2;
+    }
+}

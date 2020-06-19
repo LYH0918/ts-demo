@@ -10,30 +10,46 @@ module.exports = {
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
      /* 注意sass，scss，less的配置 */
-    // css: {
-    //     loaderOptions: {
-    //     // sass: {
-    //     //     prependData: `
-    //     //     @import "~@/assets/name.scss";
-    //     //     `
-    //     // },
-    //     // scss: {
-    //     //     prependData: `@import "~@/variables.scss";`
-    //     // },
-    //     less:{
-    //         globalVars: {
-    //         primary: '#fff'
-    //         }
-    //     }
-    //     }, // Enable CSS modules for all css / pre-processor files. // This option does not affect *.vue files.
-    // },
+    css: {
+        loaderOptions: {
+        sass: {
+            prependData: `
+            @import "~@/assets/sass/mixin.scss";
+            @import "~@/assets/sass/test.scss";
+            `
+        },
+        // scss: {
+        //     prependData: `@import "~@/variables.scss";`
+        // },
+        // less:{
+        //     globalVars: {
+        //     primary: '#fff'
+        //     }
+        // }
+        }, // Enable CSS modules for all css / pre-processor files. // This option does not affect *.vue files.
+    },
     // webpack配置
     // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
    //如果这个值是一个对象，则会通过 [webpack-merge](https://github.com/survivejs/webpack-merge) 合并到最终的配置中。
    //如果这个值是一个函数，则会接收被解析的配置作为参数。该函数及可以修改配置并不返回任何东西，也可以返回一个被克隆或合并过的配置版本。
     configureWebpack: () => {},
    //是一个函数，会接收一个基于 [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) 的 `ChainableConfig` 实例。允许对内部的 webpack 配置进行更细粒度的修改。
-    chainWebpack: () => {},
+    // chainWebpack: (config) => {
+    //     const oneOfsMap = config.module.rule('scss').oneOfs.store
+    //     oneOfsMap.forEach(item => {
+    //     item
+    //         .use('sass-resources-loader')
+    //         .loader('sass-resources-loader')
+    //         .options({
+    //         // Provide path to the file with resources
+    //         // resources: './path/to/resources.scss',
+
+    //         // Or array of paths
+    //             resources: ['./src/assets/sass/basic-data.scss', './src/assets/sass/mixin.scss']
+    //         })
+    //         .end()
+    //     })
+    // },
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap: true,
     // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
