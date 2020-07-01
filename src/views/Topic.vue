@@ -7,12 +7,20 @@
 </template>
 
 <script lang='ts'>
-    import { Component, Vue } from 'vue-property-decorator';
+    import { Component, Vue, Prop } from 'vue-property-decorator';
     @Component
     export default class Topic extends Vue {
+       @Prop()
+       private name: string;
+       @Prop()
+       private flag: boolean;
        private topicChange(theme: string) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
+        }
+        private created() {
+            // console.log(this.name);
+            // console.log(this.flag);
         }
     }
 </script>
@@ -21,8 +29,7 @@
     .bg{
         width:100%;
         height:100%;
-        border:1px solid #000;
-        @include bg_color(#aaa)
+        @include bg_color(#aaa);
     }
     .test{
         color:$test-color;

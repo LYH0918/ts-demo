@@ -19,5 +19,9 @@
         private created() {
             console.log(this.gerden);
         }
+        private beforeRouteEnter(to: any, from: any, next: any) {
+            next((vm: any) => { console.log(vm); });
+            console.log(from.name);
+        }
     }
 </script>

@@ -14,6 +14,7 @@ module.exports = {
         loaderOptions: {
         sass: {
             prependData: `
+            @import "~@/assets/sass/base.scss";
             @import "~@/assets/sass/mixin.scss";
             @import "~@/assets/sass/test.scss";
             `
@@ -63,7 +64,7 @@ module.exports = {
            open: false,
            /* 设置为0.0.0.0则所有的地址均能访问 */
            host: '0.0.0.0',
-           port: 8088,
+           port: 8087,
            https: false,
            hotOnly: false,
            /* 使用代理 */

@@ -1,37 +1,32 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-  {
-    path: '/demo',
-    name: 'demo',
-    component: () => import('../views/Demo.vue'),
+    name: 'topic',
+    component: () => import(/* webpackChunkName: "topic" */ '../views/Topic.vue'),
+    props: { name: 'topic', flag: true },
+    meta: { cn_name: '主题设置' },
   },
   {
     path: '/type',
     name: 'type',
-    component: () => import('../views/type.vue'),
+    component: () => import(/* webpackChunkName: "type" */ '../views/type.vue'),
+    meta: { cn_name: '类型练习' },
   },
   {
-    path: '/topic',
-    name: 'topic',
-    component: () => import('../views/Topic.vue'),
+    path: '/render',
+    name: 'render',
+    component: () => import(/* webpackChunkName: "render" */ '../views/Render.vue'),
+    meta: { cn_name: '渲染函数' },
+  },
+  {
+    path: '*',
+    name: 'error',
+    component: () => import(/* webpackChunkName: "error" */ '../views/Error.vue'),
   },
 ];
 

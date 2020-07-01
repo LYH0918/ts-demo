@@ -9,3 +9,32 @@
         background-color: $bg-color-theme2;
     }
 }
+
+
+@mixin control_color($color) {
+    background-color:$color;
+    [data-theme='theme1'] & {
+        background-color: $control-color-theme1;
+    }
+    [data-theme='theme2'] & {
+        background-color: $control-color-theme2;
+    }
+    [data-theme='theme2'] & {
+        background-color: $control-color-theme3;
+    }
+}
+
+@mixin font_color($color) {
+    color:$color;
+    [data-theme='theme1'] & {
+        color: $font-color-theme1;
+    }
+    [data-theme='theme2'] & {
+        color: $font-color-theme2;
+    }
+    [data-theme='theme2'] & {
+        color: $font-color-theme3;
+    }
+}
+
+
