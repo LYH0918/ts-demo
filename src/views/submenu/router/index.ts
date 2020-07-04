@@ -8,7 +8,7 @@ const routes = [
     {
         path: 'page-one',
         name: 'pageOne',
-        component: () => import(/* webpackChunkName: "pageOne" */ '../views/subpage-one/index.vue'),
+        component: () => import(/* webpackChunkName: "pageOne" */ '@/components/router-page/Frame.vue'),
         children: [
             {
                 path: '',
@@ -32,7 +32,7 @@ const routes = [
     {
         path: 'page-two',
         name: 'pageTwo',
-        component: () => import(/* webpackChunkName: "pageTwo" */ '../views/subpage-two/index.vue'),
+        component: () => import(/* webpackChunkName: "pageTwo" */ '@/components/router-page/Frame.vue'),
         meta: { cn_name: '子页2' },
     },
 ];

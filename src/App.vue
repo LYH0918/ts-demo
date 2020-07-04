@@ -26,9 +26,7 @@
           </div>
         </aside>
         <article>
-          <transition name="slide">
-            <router-view></router-view>
-          </transition>
+          <dy-routerview></dy-routerview>
         </article>
       </section>
   </div>
@@ -39,12 +37,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import navs from '@/components/base/nav.vue';
 import personalMsg from '@/components/base/personal-msg-setting.vue';
 import slideMenu from '@/components/base/side-menu.vue';
+import dyRouterview from '@/components/base/dy-routerview.vue';
 
 @Component({
   components: {
     navs,
     personalMsg,
     slideMenu,
+    dyRouterview,
   },
 })
 export default class App extends Vue {
@@ -100,7 +100,6 @@ export default class App extends Vue {
 </script>
 
 <style lang='scss'>
-  @import './assets/sass/dynamic-response.scss';
   #app{
     overflow-x: hidden;
     height:100%;
