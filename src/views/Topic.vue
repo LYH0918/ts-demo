@@ -1,8 +1,8 @@
 <template>
     <div class='bg'>
-        <el-button @click="topicChange('theme1')">theme1</el-button>
+        <!-- <el-button @click="topicChange('theme1')">theme1</el-button>
         <el-button @click="topicChange('theme2')">theme2</el-button>
-        <div class='test'>color</div>
+        <div class='test'>color</div> -->
     </div>
 </template>
 
@@ -32,6 +32,6 @@
         @include bg_color(#aaa);
     }
     .test{
-        color:$test-color;
+        color:#fff;
     }
 </style>

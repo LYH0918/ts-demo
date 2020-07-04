@@ -1,11 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import subMenuChild from '@/views/submenu/router/index';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
+    redirect: '/topic',
+    name: 'index',
+  },
+  {
+    path: '/topic',
     name: 'topic',
     component: () => import(/* webpackChunkName: "topic" */ '../views/Topic.vue'),
     props: { name: 'topic', flag: true },
@@ -21,12 +27,20 @@ const routes = [
     path: '/render',
     name: 'render',
     component: () => import(/* webpackChunkName: "render" */ '../views/Render.vue'),
+    children: [],
     meta: { cn_name: '渲染函数' },
   },
   {
     path: '*',
     name: 'error',
     component: () => import(/* webpackChunkName: "error" */ '../views/Error.vue'),
+  },
+  {
+    path: '/submenu',
+    name: 'submenu',
+    component: () => import(/* webpackChunkName: "error" */ '../views/submenu/views/index.vue'),
+    children: subMenuChild,
+    meta: { cn_name: '子页面' },
   },
 ];
 

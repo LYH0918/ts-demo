@@ -16,7 +16,7 @@ module.exports = {
             prependData: `
             @import "~@/assets/sass/base.scss";
             @import "~@/assets/sass/mixin.scss";
-            @import "~@/assets/sass/test.scss";
+            @import "~@/assets/sass/basic-data.scss";
             `
         },
         // scss: {

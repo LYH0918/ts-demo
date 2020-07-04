@@ -14,7 +14,7 @@ declare global {
 
 declare module 'vue/types/vue' {
   interface Vue {
-      $YHConfirm: Function
-      $YHCom: Function
+      $YHConfirm: Function;
+      $YHCom: Function;
   }
 }
