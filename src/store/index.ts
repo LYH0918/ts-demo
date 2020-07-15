@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import user from './user';
+import user from './module/user';
+import routeTab from './module/routeTab';
 
 Vue.use(Vuex);
 
@@ -23,5 +24,6 @@ export default new Vuex.Store({
   },
   modules: {
     user,
+    routeTab,
   },
 });

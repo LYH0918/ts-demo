@@ -35,3 +35,9 @@ export interface Test {
 export type TestFun = <T>(arg: T) => T; // 这种无需再定义函数时定义传入类型
 
 // export type TestFun = (arg: number[]) => number[];
+
+export interface Tab {
+    name: string;
+    path: string;
+    [propName: string]: any;
+}

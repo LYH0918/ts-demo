@@ -1,7 +1,5 @@
 <template>
-  <div class="about">
     <dy-routerview></dy-routerview>
-  </div>
 </template>
 
 <script lang='ts'>

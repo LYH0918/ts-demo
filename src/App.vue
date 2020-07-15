@@ -26,18 +26,26 @@
           </div>
         </aside>
         <article>
-          <dy-routerview></dy-routerview>
+          <div class='tab-box'>
+              <tab></tab>
+          </div>
+          <div class='route-page'>
+            <dy-routerview></dy-routerview>
+          </div>
         </article>
       </section>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import navs from '@/components/base/nav.vue';
 import personalMsg from '@/components/base/personal-msg-setting.vue';
 import slideMenu from '@/components/base/side-menu.vue';
 import dyRouterview from '@/components/base/dy-routerview.vue';
+import tab from '@/components/base/tab.vue';
+import { Mutation, namespace } from 'vuex-class';
+const routeTab = namespace('routeTab');
 
 @Component({
   components: {
@@ -45,9 +53,16 @@ import dyRouterview from '@/components/base/dy-routerview.vue';
     personalMsg,
     slideMenu,
     dyRouterview,
+    tab,
   },
 })
 export default class App extends Vue {
+
+  @routeTab.Mutation('toPage')
+  private jump: (val: any) => void;
+
+  @routeTab.Mutation('tabChange')
+  private tabChange: (val: string) => void;
 
   // 菜单是否折叠
   private isCollapse: boolean = false;
@@ -70,10 +85,24 @@ export default class App extends Vue {
     return this.isCollapse ? {maxWidth: '64px'} : {maxWidth: '200px'};
   }
 
+  @Watch('$route')
+  private routeChange(val: any) {
+    this.jump(val);
+    const moduleName = val.matched[0].name || '';
+    sessionStorage.setItem('currentModule', moduleName);
+    if (val.meta.newTab) {
+      this.tabChange(val.name);
+    }
+  }
+
+
+
   // 导航切换模块时触发，提醒侧边导航栏更新导航内容
   private moduleChange(option: {name: string, type: string}) {
     const routes = this.router.options.routes || [];
-    const currentModule = routes.filter((item: any) => option.name === item.name )[0] || {};
+    const currentRoute = this.$route;
+    const currentModule = currentRoute.matched && currentRoute.matched[0] ?
+    routes.filter((item: any) => currentRoute.matched[0].name === item.name )[0] || {} : '';
     const basePath = currentModule.path;
     const menu = currentModule.children ? currentModule.children.filter((item: any) => {
       return !item.redirect && item.path.indexOf('*') === -1;
@@ -81,8 +110,8 @@ export default class App extends Vue {
     menu.map((item: any) => {
       item.fullPath = `${basePath}/${item.path}`;
     });
-    this.activeNav = this.$route.path;
-    this.isCollapse = option.type === 'click' ? false : this.isCollapse;
+    this.activeNav = currentRoute.path;
+    // this.isCollapse = option.type === 'click' ? false : this.isCollapse;
     this.menu = menu;
     // console.log(menu);
   }
@@ -163,6 +192,15 @@ export default class App extends Vue {
         padding:16px;
         height:100%;
         background:#F3F7FD;
+        .tab-box {
+          height: 37px;
+          width:100%;
+          border-bottom:1px solid #eee;
+        }
+        .route-page {
+          background: #fff;
+          padding:12px;
+        }
       }
     }
   }

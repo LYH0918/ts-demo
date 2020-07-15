@@ -18,13 +18,13 @@ const routes = [
                 path: 'grandson-one',
                 name: 'grandsonOne',
                 component: () => import(/* webpackChunkName: "'grandsonOne" */ '../views/subpage-one/child1.vue'),
-                meta: { cn_name: '孙页1' },
+                meta: { cn_name: '孙页1', newTab: true },
             },
             {
                 path: 'grandson-two',
                 name: 'grandsonTwo',
                 component: () => import(/* webpackChunkName: "grandsonTwo" */ '../views/subpage-one/child2.vue'),
-                meta: { cn_name: '孙页2' },
+                meta: { cn_name: '孙页2', newTab: true },
             },
         ],
         meta: { cn_name: '子页1', icon: 'el-icon-s-order' },
@@ -33,7 +33,7 @@ const routes = [
         path: 'page-two',
         name: 'pageTwo',
         component: () => import(/* webpackChunkName: "pageTwo" */ '@/components/router-page/Frame.vue'),
-        meta: { cn_name: '子页2' },
+        meta: { cn_name: '子页2', newTab: true },
     },
 ];
 

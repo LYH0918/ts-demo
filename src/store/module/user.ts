@@ -7,6 +7,6 @@ export default {
     getters: {
 
     },
-    mutation: {},
+    mutations: {},
     action: {},
 };
