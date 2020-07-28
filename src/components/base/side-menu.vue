@@ -97,4 +97,7 @@
         -webkit-transition: 0s width, 0s padding-left, 0s padding-right;
         transition: 0s width, 0s padding-left, 0s padding-right
     }
+   .menu-box .is-active {
+        background: #171C48 !important;
+    }
 </style>

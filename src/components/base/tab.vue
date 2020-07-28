@@ -72,9 +72,21 @@
 
 <style>
     .el-tabs__item {
-        height: 36px !important;
-        line-height: 36px !important;
-        background: #fff;
+        height: 32px !important;
+        line-height: 32px !important;
+        background: #F9F9F9;
+        margin-bottom: 1px;
+        border-bottom: 1px  solid #E4E7ED !important;
+    }
+    .el-tabs--card > .el-tabs__header :not(.is-active).el-tabs__item.is-closable:hover {
+       color:#303133;
+    }
+    .el-tabs--card>.el-tabs__header {
+        border-bottom: none !important;
+    }
+    .tabs-box .is-active {
+        border-bottom: none !important;
+        background:#fff;
     }
 </style>
 

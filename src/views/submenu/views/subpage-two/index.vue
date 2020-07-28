@@ -1,6 +1,16 @@
 <template>
   <div class="about">
-    <h1>This is page2</h1>
+    <h1 @click='toSon'>This is page2</h1>
     <router-view></router-view>
   </div>
 </template>
+
+<script lang='ts'>
+  import { Component, Vue, Prop } from 'vue-property-decorator';
+  @Component
+  export default class GrandsonOne extends Vue {
+    private toSon() {
+      this.$router.push({name: 'subViewTwo', params: {name: 'testTabParams'}});
+    }
+  }
+</script>

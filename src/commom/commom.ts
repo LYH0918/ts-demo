@@ -35,9 +35,17 @@ export interface Test {
 export type TestFun = <T>(arg: T) => T; // 这种无需再定义函数时定义传入类型
 
 // export type TestFun = (arg: number[]) => number[];
-
+interface Meta {
+    cn_name?: string;
+    newTab?: boolean;
+    derivation?: string;
+    parentName?: string;
+    tabName?: string;
+    hideMenu?: boolean;
+}
 export interface Tab {
     name: string;
     path: string;
     [propName: string]: any;
+    meta: Meta;
 }

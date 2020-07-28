@@ -69,7 +69,7 @@ export default class App extends Vue {
 
   private menu: any[] = [];
 
-  private activeNav: string = '';
+  private activeNav: string | undefined = '';
 
   get router(): any { return this.$router; }
 
@@ -105,15 +105,22 @@ export default class App extends Vue {
     routes.filter((item: any) => currentRoute.matched[0].name === item.name )[0] || {} : '';
     const basePath = currentModule.path;
     const menu = currentModule.children ? currentModule.children.filter((item: any) => {
-      return !item.redirect && item.path.indexOf('*') === -1;
+      return !item.redirect && item.path.indexOf('*') === -1 && (item.meta ? !item.meta.hideMenu : true);
     }) : [];
     menu.map((item: any) => {
       item.fullPath = `${basePath}/${item.path}`;
     });
-    this.activeNav = currentRoute.path;
+    if (currentRoute.meta.derivation) {
+        const { matched } = currentRoute;
+        if (matched && matched.length > 1) {
+          const base = matched[ matched.length - 2 ].path;
+          this.activeNav = `${base}/${currentRoute.meta.derivation}`;
+        }
+    } else {
+        this.activeNav = currentRoute.path;
+    }
     // this.isCollapse = option.type === 'click' ? false : this.isCollapse;
     this.menu = menu;
-    // console.log(menu);
   }
 
   // 从localStorage中获取用户之前保存的主题信息（暂无接口调取，先local代替）
@@ -193,9 +200,8 @@ export default class App extends Vue {
         height:100%;
         background:#F3F7FD;
         .tab-box {
-          height: 37px;
+          height: 32px;
           width:100%;
-          border-bottom:1px solid #eee;
         }
         .route-page {
           background: #fff;
