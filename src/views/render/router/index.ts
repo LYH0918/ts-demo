@@ -5,8 +5,8 @@ const routes = [
     },
     {
         path: 'render-table',
-        name: 'renderTable',
-        component: () => import(/* webpackChunkName: "renderTable" */ '../views/Render.vue'),
+        name: 'Render',
+        component: () => import(/* webpackChunkName: "Render" */ '../views/Render.vue'),
         meta: { cn_name: '渲染函数', newTab: true },
     },
 ];

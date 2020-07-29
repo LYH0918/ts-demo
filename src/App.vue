@@ -198,6 +198,7 @@ export default class App extends Vue {
         flex:1;
         padding:16px;
         height:100%;
+        width: calc(100% - 200px);
         background:#F3F7FD;
         .tab-box {
           height: 32px;

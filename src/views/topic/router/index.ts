@@ -5,8 +5,8 @@ const routes = [
     },
     {
         path: 'topic-bgcolor',
-        name: 'topicBgcolor',
-        component: () => import(/* webpackChunkName: "topicBgcolor" */ '../views/Topic.vue'),
+        name: 'Topic',
+        component: () => import(/* webpackChunkName: "Topic" */ '../views/Topic.vue'),
         meta: { cn_name: '背景主题练习', newTab: true },
     },
 ];

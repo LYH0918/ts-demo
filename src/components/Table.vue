@@ -1,11 +1,14 @@
 <template>
     <div>
-        <el-table :data='tableData'>
+        <el-table :data='tableData' v-bind="$attrs" v-on="$listeners" :header-cell-style='headerStyle'>
             <el-table-column
                 v-for='(column,index) in columns'
                 :key='index'
                 :label='column.label'
-                :width="column.width">
+                :width="column.width"
+                v-bind="$attrs"
+                :fixed="column.fixed"
+                v-on="$listeners">
                 <template slot-scope="scope">
                     <span v-if='!column.render'>{{scope.row[column.prop]}}</span>
                     <custom-col
@@ -21,6 +24,7 @@
 
 <script lang='ts'>
     import { Component, Vue, Prop } from 'vue-property-decorator';
+    type RenderFun = (label: string, attribute: object, content: string | any[]) => any;
     const customCol = {
         functional: true,
         props: {
@@ -33,13 +37,13 @@
             render: {
                 type: Function,
                 default() {
-                    return (h: (label: string, attribute: object, content: string | any[]) => any, row: any) => {
+                    return (h: RenderFun, row: any) => {
                         return h('span', {}, row.label);
                     };
                 },
             },
         },
-        render: (h: (label: string, attribute: object, content: string | any[]) => any, data: any) => {
+        render: (h: RenderFun, data: any) => {
             return data.props.render(h, data.props.row);
         },
     };
@@ -52,6 +56,15 @@
 
         @Prop({ default: [] })
         private tableData: any[];
+
+        @Prop({ default: () => {
+            return {
+                color: '#333',
+                backgroundColor: '#F6F6F6',
+                padding: '10px 0',
+            };
+        } })
+        private headerStyle: () => any;
     }
 </script>
 

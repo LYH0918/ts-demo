@@ -12,6 +12,7 @@
 <script lang='ts'>
     import { Component, Vue, Prop } from 'vue-property-decorator';
     import renderTable from '@/components/Table.vue';
+    import { Render as renderFun } from '@/commom/commom';
     const renderTpl = {
         functional: true,
         props: {
@@ -30,7 +31,7 @@
                 },
             },
         },
-        render: (h: (a: string, b: object, c: string | any[]) => any, data: any) => {
+        render: (h: renderFun, data: any) => {
             return data.props.render(h, data.props.column);
         },
     };
@@ -44,7 +45,7 @@
             {prop: 'col1', label: '列1'},
             {
                 prop: 'col2', label: '列2',
-                render: (h: (a: string, b: object, c: string | any[]) => any, props: { label: string, prop: any }) => {
+                render: (h: renderFun, props: { label: string, prop: any }) => {
                     return h('span', { style: {color: 'blue'} }, props.label);
                 },
             },
@@ -57,22 +58,55 @@
             label: '列二',
             prop: 'col2',
             width: 300,
-            render: (h: (a: string, b: object, c: string | any[]) => any, row: any) => {
+            render: (h: renderFun, row: any) => {
                 return h('div', {style: { color: 'blue'}}, [
                     h('div', {}, row.col2),
                     h('div', {}, row.col2),
                 ]);
             },
         }, {
+            label: '列三',
+            prop: 'col3',
+            width: 300,
+        }, {
+            label: '列四',
+            prop: 'col4',
+            width: 300,
+        }, {
+            label: '列五',
+            prop: 'col5',
+            width: 300,
+        }, {
+            label: '列六',
+            prop: 'col6',
+            width: 300,
+        }, {
+            label: '列七',
+            prop: 'col7',
+            width: 300,
+        }, {
+            label: '列八',
+            prop: 'col8',
+            width: 300,
+        },  {
             label: '操作',
             prop: 'operation',
+            fixed: 'right',
             render: (h: (a: string, b: object, c: string | any[]) => any, row: any) => {
-                return h('span', {style: { color: 'red'}}, '操作');
+                return h('span', {
+                    style: { color: 'red'},
+                }, '操作');
             },
         }];
         private tableData: any[] = [{
-            col1: '哈哈',
+            col1: '哈哈京',
             col2: '呵呵',
+            col3: '呵呵',
+            col4: '呵呵',
+            col5: '呵呵',
+            col6: '呵呵',
+            col7: '呵呵',
+            col8: '呵呵',
         }];
     }
     // console.log(renderTpl)

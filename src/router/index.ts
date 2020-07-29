@@ -7,7 +7,7 @@ import typeChild from '@/views/type/router';
 
 Vue.use(VueRouter);
 
-const routes = [
+export const routes = [
   {
     path: '/',
     redirect: '/topic',

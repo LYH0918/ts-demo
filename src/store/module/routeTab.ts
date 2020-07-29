@@ -108,7 +108,6 @@ export default {
         },
         // tab点击关闭执行
         removeTab(state: any, payload: number) {
-            // const index = state.historyRoutes.findIndex((item: any) => item.name === payload);
             state.historyRoutes.splice(payload, 1);
         },
         // 切换tab执行

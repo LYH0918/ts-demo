@@ -16,5 +16,6 @@ declare module 'vue/types/vue' {
   interface Vue {
       $YHConfirm: Function;
       $YHCom: Function;
+      $notAliveList: string[];
   }
 }

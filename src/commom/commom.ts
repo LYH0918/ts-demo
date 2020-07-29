@@ -49,3 +49,5 @@ export interface Tab {
     [propName: string]: any;
     meta: Meta;
 }
+
+export type Render = (a: string, b: object, c: string | any[]) => any;

@@ -23,6 +23,7 @@
         @Mutation('getInfo')
         private getInfo: () => void;
         private created() {
+            console.log('create');
             const a: Sport = Sport.basketball;
             const b: string = Sport[8];
             console.log(a);
@@ -87,6 +88,10 @@
         }
 
         private TestFun: TestFun = function(arg) { return arg; };
+
+        private activated() {
+            console.log('activated');
+        }
     }
 </script>
 

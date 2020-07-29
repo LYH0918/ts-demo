@@ -7,8 +7,8 @@ const routes = [
     },
     {
         path: 'page-one',
-        name: 'pageOne',
-        component: () => import(/* webpackChunkName: "pageOne" */ '@/components/router-page/Frame.vue'),
+        name: 'PageOne',
+        component: () => import(/* webpackChunkName: "PageOne" */ '@/components/router-page/Frame.vue'),
         children: [
             {
                 path: '',
@@ -16,20 +16,20 @@ const routes = [
             },
             {
                 path: 'grandson-one',
-                name: 'grandsonOne',
-                component: () => import(/* webpackChunkName: "'grandsonOne" */ '../views/subpage-one/child1.vue'),
+                name: 'GrandsonOne',
+                component: () => import(/* webpackChunkName: "'GrandsonOne" */ '../views/subpage-one/child1.vue'),
                 meta: { cn_name: '孙页1', newTab: true },
             },
             {
                 path: 'grandson-one/sub-view',
-                name: 'subView',
-                component: () => import(/* webpackChunkName: "subView" */ '../views/subpage-one/sub-view/test.vue'),
-                meta: { derivation: 'grandson-one', parentName: 'grandsonOne', tabName: '孙页1' },
+                name: 'SubTestView',
+                component: () => import(/* webpackChunkName: "SubTestView" */ '../views/subpage-one/sub-view/test.vue'),
+                meta: { derivation: 'grandson-one', parentName: 'GrandsonOne', tabName: '孙页1' },
             },
             {
                 path: 'grandson-two',
-                name: 'grandsonTwo',
-                component: () => import(/* webpackChunkName: "grandsonTwo" */ '../views/subpage-one/child2.vue'),
+                name: 'GrandsonTwo',
+                component: () => import(/* webpackChunkName: "GrandsonTwo" */ '../views/subpage-one/child2.vue'),
                 meta: { cn_name: '孙页2', newTab: true },
             },
         ],
@@ -37,15 +37,15 @@ const routes = [
     },
     {
         path: 'page-two',
-        name: 'pageTwo',
-        component: () => import(/* webpackChunkName: "pageTwo" */ '../views/subpage-two/index.vue'),
+        name: 'PageTwo',
+        component: () => import(/* webpackChunkName: "PageTwo" */ '../views/subpage-two/index.vue'),
         meta: { cn_name: '子页2', newTab: true },
     },
     {
         path: 'page-two/sub-view',
-        name: 'subViewTwo',
-        component: () => import(/* webpackChunkName: "subViewTwo" */ '../views/subpage-two/sub-view/test.vue'),
-        meta: { newTab: true, tabName: '曾孙页', hideMenu: true, derivation: 'page-two', parentName: 'pageTwo' },
+        name: 'SubViewTwo',
+        component: () => import(/* webpackChunkName: "SubViewTwo" */ '../views/subpage-two/sub-view/test.vue'),
+        meta: { newTab: true, tabName: '曾孙页', hideMenu: true, derivation: 'page-two', parentName: 'PageTwo' },
     },
 ];
 

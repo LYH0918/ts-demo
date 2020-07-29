@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import extend from '@/direction-component/extend.ts';
 import Component from 'vue-class-component';
+import ahead from './config/ahead';
 Component.registerHooks([
   'beforeRouteEnter',
   'beforeRouteLeave',
@@ -15,6 +16,8 @@ Component.registerHooks([
 Vue.use( ElementUI );
 
 Vue.use( extend );
+
+Vue.use( ahead );
 
 Vue.config.productionTip = false;
 

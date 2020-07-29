@@ -8,9 +8,9 @@
 <script lang='ts'>
   import { Component, Vue, Prop } from 'vue-property-decorator';
   @Component
-  export default class GrandsonOne extends Vue {
+  export default class GrandsonTwo extends Vue {
     private toSon() {
-      this.$router.push({name: 'subViewTwo', params: {name: 'testTabParams'}});
+      this.$router.push({name: 'SubViewTwo', params: {name: 'testTabParams'}});
     }
   }
 </script>

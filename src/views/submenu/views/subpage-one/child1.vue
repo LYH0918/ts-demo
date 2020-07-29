@@ -9,7 +9,7 @@
   @Component
   export default class GrandsonOne extends Vue {
     private toSon() {
-      this.$router.push({name: 'subView', params: {name: 'testTabParams'}});
+      this.$router.push({name: 'SubTestView', params: {name: 'testTabParams'}});
     }
   }
 </script>
